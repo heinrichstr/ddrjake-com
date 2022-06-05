@@ -1,0 +1,176 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto+Slab:700|Roboto:300&display=swap");
+
+/* RESET */
+html,
+body,
+div,
+span,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+a,
+em,
+img,
+b,
+u,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+    font-family: "Roboto", sans-serif;
+    color: $gray;
+}
+
+sup {
+    z-index: 0;
+}
+
+body {
+    line-height: 1;
+    background-color: $darkGreen;
+}
+
+ol,
+ul {
+    list-style: none;
+}
+
+ul,
+ol {
+    strong {
+        font-weight: 700;
+    }
+    h3 {
+        font-weight: 400;
+    }
+    li {
+        font-weight: 300;
+        line-height: 2.2rem;
+        font-size: $m-size;
+        a {
+            i {
+                font-weight: 300;
+            }
+        }
+    }
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+html {
+    box-sizing: border-box;
+    font-size: 62.5%; // sets rems to base 10 (e.g. 2.4rem = 24pt on browser default zoom), see settings.css for font sizes
+}
+
+html,
+body,
+#app {
+    height: 100%;
+    z-index:10;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+p {
+    font-size: $m-size;
+    line-height: 2.2rem;
+}
+
+h1 {
+    font-size: $l-size;
+    font-family: "Roboto Slab", serif;
+}
+
+h2,
+h3,
+h4,
+h5 {
+    font-size: $l-size;
+    font-family: "Roboto Slab", serif;
+}
+/*END RESET*/
+
+.sectionContainer {
+    width: 100%;
+    display: block;
+    position: relative;
+}
+
+a {
+    text-decoration: none;
+    color: $orange;
+    &:hover {
+        @include transition(0.5s);
+        color: $darkGreen;
+    }
+}
+
+.homepageBar {
+    width: 100%;
+    background-color: $darkGreen;
+    flex: 0 0 15%;
+    align-items: center;
+    justify-content: flex-start;
+    padding:40px;
+    padding-bottom:40px;
+    display: flex;
+    z-index:100;
+    justify-content: space-between;
+    @include shadow(5px, .15);
+    h1 {
+        color: $orange;
+        flex: 0 1 auto;
+    }
+    a {
+        font-size: $ml-size;
+        font-weight: bold;
+        font-family: "Roboto Slab", serif;
+        &:hover {
+            color: #fafafa;
+            h1 {
+                color: #fafafa;
+                @include transition(0.25s);
+            }
+        }
+    }
+}
+
+//preload images on homepage
+body::after {
+    position: absolute;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    z-index: -1; // hide images
+    content: url(../img/bird.jpg) url(../img/whale.jpg) url(../img/crow.jpg) url(../img/lynx.jpg) url(../img/raven.jpg)
+        url(../img/tree.jpg) url(../img/tree2.jpg); // load images
+}

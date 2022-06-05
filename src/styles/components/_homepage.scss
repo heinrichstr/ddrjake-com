@@ -1,0 +1,138 @@
+.homepagePage{
+    display:flex;
+    position:relative;
+    height:100%;
+    flex-direction:column;
+    .andText{
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        margin-right:40px;
+        transform:translate(-40px,-55px);
+        font-size:10rem;
+        color:$orange;
+        z-index:101;
+    }
+    .homepageGalleries{
+        flex: 0 0 70%;
+        display:flex;
+        overflow:hidden;
+        .stripeElement{
+            @include shadow(5px,.15);
+            position:absolute;
+            height:150vh;
+            width:200px;
+            background-color:$darkGreen;
+            margin-left: auto;
+            margin-right: auto;
+            left: 0;
+            right: 40px;
+            z-index:100;
+            top:-50%;
+            transform: rotate(15deg);
+        }
+        //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        .homepageLinkButton{
+            width:100%;
+            overflow:hidden;
+            position:relative;
+            display:block;
+            &.artButton{
+                clip-path: polygon(0 0, 100% 0, 65% 100%, 0% 100%);
+            }
+            &.designButton{
+                clip-path: polygon(35% 0, 100% 0, 100% 100%, 0% 100%);
+            }
+            h2{
+                z-index:100;
+                display:block;
+                position:absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                padding:30px;
+                font-size:$xl-size;
+                color:$orange;
+                background-color:$darkGreen;
+                border:3px solid $orange;
+                @include shadow(1px, .25);
+                &:hover{
+                    text-decoration: underline;
+                }
+            }
+            h2:hover + div{ //applies hover to background image
+                filter: brightness(125%); 
+            }
+            div{
+                &:hover{
+                    @include transition(.25s);
+                    filter: brightness(125%); 
+                }
+                @include transitionGallery();
+                animation-name:galleryAnimate;
+                -webkit-animation-name: galleryAnimate;
+                width:125%;
+                height:125%;
+                background-size: cover;
+                background-position: center;
+            }
+            div:hover + h2{
+                text-decoration: underline;
+                color:red;
+            }
+        }
+        //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    }
+    @media screen and (max-width:1000px) {
+        .homepageGalleries{
+            flex-direction:column;
+            .stripeElement{
+                display:none;
+            }
+            .homepageLinkButton{
+                border:20px solid $darkGreen;
+                overflow:hidden;
+                left:0;
+                flex: 0 0 50%;
+                height:500px;
+                .imgGallery{
+                    width:110%;
+                    height:110%
+                }
+                &.artButton{
+                    clip-path: none;
+                }
+                &.designButton{
+                    clip-path: none;
+                }
+            }
+        }
+        .andText{
+            display:none;
+        }
+    }
+}
+
+@keyframes galleryAnimate {
+    0%   {
+        opacity:0;
+        -webkit-transform: translate(-5%,-5%);
+    }
+    2% {
+        opacity:0;
+    }
+    12%{
+        opacity:1;
+    }
+    85%{
+        opacity:1;
+    }
+    95% {
+        opacity:0;
+        
+    }
+    100%{
+        opacity:0;
+        -webkit-transform: translate(-10%,-10%);
+    }
+}
