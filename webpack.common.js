@@ -16,6 +16,11 @@ module.exports = {
     module: {
         rules: [
             {
+                test: /\.tsx$/,
+                loader: 'ts-loader',
+                exclude: /node_modules/,
+            },
+            {
                 loader: 'babel-loader',
                 test: /\.js$/,
                 exclude: /node_modules/
@@ -60,6 +65,9 @@ module.exports = {
                 }
             }
         ]
+    },
+    resolve: {
+        extensions: ['.tsx', '.ts', '.js'],
     },
     plugins: [
         new HTMLWebpackPlugin({

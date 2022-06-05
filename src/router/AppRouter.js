@@ -14,22 +14,7 @@ const LoadingComponent = () => <img src={loadingImg} />;
 // } );
 
 const AsyncHomePage = loadable( {
-    loader: () => import( '../components/HomePageSlider' ),
-    loading: LoadingComponent
-} );
-
-const AsyncDesignPage = loadable( {
-    loader: () => import( '../components/DesignPage' ),
-    loading: LoadingComponent
-} );
-
-const AsyncArtPage = loadable( {
-    loader: () => import( '../components/ArtPage' ),
-    loading: LoadingComponent
-} );
-
-const FizzBuzz = loadable( {
-    loader: () => import( '../components/FizzBuzz' ),
+    loader: () => import( '../components/HomePage' ),
     loading: LoadingComponent
 } );
 //#endregion
@@ -42,12 +27,6 @@ export default class AppRouter extends React.Component {
                     <ScrollToTop>
                         <Switch>
                             <Route path="/" component={AsyncHomePage} exact={true} />
-
-                            <Route path="/design" component={AsyncDesignPage} />
-
-                            <Route path="/art" component={AsyncArtPage} />
-
-                            <Route path="/buzz" component={FizzBuzz} />
                         </Switch>
                     </ScrollToTop>
                 </Analytics>
